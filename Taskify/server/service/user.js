@@ -83,21 +83,21 @@ const userDetails = async (req, res) => {
       .select("-password");
     if (getDetails) {
       const allTasks = getDetails.tasks || [];
-      let yetToStart = [];
-      let inProgress = [];
-      let completed = [];
+      let YetToStart = [];
+      let InProgress = [];
+      let Completed = [];
       allTasks.forEach((item) => {
-        if (item.status === "yetToStart") {
-          yetToStart.push(item);
-        } else if (item.status === "inProgress") {
-          inProgress.push(item);
-        } else if (item.status === "completed") {
-          completed.push(item);
+        if (item.status === "YetToStart") {
+          YetToStart.push(item);
+        } else if (item.status === "InProgress") {
+          InProgress.push(item);
+        } else if (item.status === "Completed") {
+          Completed.push(item);
         }
       });
       return res.status(200).json({
         success: "success",
-        tasks: { yetToStart, inProgress, completed },
+        tasks: { YetToStart, InProgress, Completed },
       });
     } else {
       return res.status(404).json({ error: "User not found" });
